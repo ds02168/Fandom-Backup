@@ -1,0 +1,54 @@
+server:
+  port: 8181
+  servlet:
+    jsp:
+      init-parameters:
+        development: true
+
+logging:
+  level:
+    root: info
+    com:
+      example:
+        NewJeans: trace
+    org:
+      hibernate: info
+
+spring:
+  # DB source
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 50MB
+
+  datasource:
+    url: jdbc:mariadb://fandom-database.ccep9xkwszxq.ap-northeast-2.rds.amazonaws.com:3306/newjeans
+    username: root
+    password: mariadb!
+
+  # JPA config
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
+        direct: org.hibernate.dialect.MariaDB106Dialect
+    show-sql: true
+    hibernate:
+      database: mysql
+      generate-ddl: true
+      ddl-auto: none
+
+  # JSP
+  mvc:
+    view:
+      prefix: /WEB-INF/view/
+      suffix: .jsp
+
+  # thymeleaf
+#  thymeleaf:
+#    prefix: classpath:/templates/
+#    suffix: .html
+#    cache: false
+file:
+  dir:
+    "/home/ec2-user"
